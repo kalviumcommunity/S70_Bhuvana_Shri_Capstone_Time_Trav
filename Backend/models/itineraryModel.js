@@ -1,26 +1,13 @@
 const mongoose = require('mongoose');
 
-const itinerarySchema = new mongoose.Schema({
+const ItinerarySchema = new mongoose.Schema({
+  trip: { type: mongoose.Schema.Types.ObjectId, ref: 'Trip' },
+  date: Date,
+  period: String, // morning, afternoon, evening
+  activity: String,
+  location: String,
+  travelDuration: String,
+  notes: String,
+});
 
-    trip: 
-    { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Trip', 
-        required: true 
-    },
-
-    date: 
-    { 
-        type: Date, 
-        required: true 
-    },
-    activities: [{
-        time: String,
-        activity: String,
-        location: String,
-        transportation: String,
-        notes: String
-    }]
-}, { timestamps: true });
-
-module.exports = mongoose.model('Itinerary', itinerarySchema);
+module.exports = mongoose.model('Itinerary', ItinerarySchema);

@@ -1,8 +1,11 @@
 const express = require('express');
-const { addItinerary, getTripItinerary } = require('../controllers/itineraryController');
 const router = express.Router();
+const auth = require('../middleware/auth');
+const { createItinerary, getTripItinerary, updateItinerary, deleteItinerary } = require('../controllers/itineraryController');
 
-router.post('/', addItinerary);
-router.get('/:tripId', getTripItinerary);
+router.post('/', auth, createItinerary);
+router.get('/:tripId', auth, getTripItinerary);
+router.put('/:id', auth, updateItinerary);
+router.delete('/:id', auth, deleteItinerary);
 
 module.exports = router;

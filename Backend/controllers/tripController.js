@@ -1,31 +1,38 @@
 const Trip = require('../models/tripModel');
+
 exports.createTrip = async (req, res) => {
-    try {
-        const { tripName, destination, startDate, endDate, travelCompanions, notes, visibility } = req.body;
-
-        const trip = await Trip.create({
-            user: req.user.id,
-            tripName,
-            destination,
-            startDate,
-            endDate,
-            travelCompanions,
-            notes,
-            visibility
-        });
-
-        res.status(201).json(trip);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
+  try {
+    const trip = new Trip({ ...req.body, user: req.userId });
+    await trip.save();
+    res.status(201).json(trip);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
 };
 
-// Get user's trips
 exports.getUserTrips = async (req, res) => {
-    try {
-        const trips = await Trip.find({ user: req.user.id });
-        res.json(trips);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+  try {
+    const trips = await Trip.find({ user: req.userId });
+    res.json(trips);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
+
+exports.updateTrip = async (req, res) => {
+  try {
+    const updatedTrip = await Trip.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updatedTrip);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
+
+exports.deleteTrip = async (req, res) => {
+  try {
+    await Trip.findByIdAndDelete(req.params.id);
+    return res.json({ message: 'Trip deleted' });
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
 };

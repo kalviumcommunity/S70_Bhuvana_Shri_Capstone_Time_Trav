@@ -1,31 +1,30 @@
 {
-  "name": "s70_bhuvana_shri_capstone_time_trav",
+  "name": "capstone-project",
   "version": "1.0.0",
   "description": "TimeTrav is a MERN stack-based web application that allows users to document their trips, plan itineraries, track expenses, and share experiences. It integrates map functionality to help users efficiently organize their travel plans.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kalviumcommunity/S70_Bhuvana_Shri_Capstone_Time_Trav.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Bhuvana Shri",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/kalviumcommunity/S70_Bhuvana_Shri_Capstone_Time_Trav/issues"
   },
   "homepage": "https://github.com/kalviumcommunity/S70_Bhuvana_Shri_Capstone_Time_Trav#readme",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "bcryptjs": "^3.0.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.13.2"
+    "express": "^4.18.2",
+    "mongoose": "^6.8.0",
+    "dotenv": "^16.0.3",
+    "cors": "^2.8.5"
   }
 }

@@ -1,28 +1,38 @@
 const Itinerary = require('../models/itineraryModel');
 
-// Add itinerary for a trip
-exports.addItinerary = async (req, res) => {
-    try {
-        const { tripId, date, activities } = req.body;
-
-        const itinerary = await Itinerary.create({
-            trip: tripId,
-            date,
-            activities
-        });
-
-        res.status(201).json(itinerary);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
+exports.createItinerary = async (req, res) => {
+  try {
+    const itinerary = new Itinerary(req.body);
+    await itinerary.save();
+    res.status(201).json(itinerary);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
 };
 
-// Get itinerary for a trip
 exports.getTripItinerary = async (req, res) => {
-    try {
-        const itinerary = await Itinerary.find({ trip: req.params.tripId });
-        res.json(itinerary);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+  try {
+    const itinerary = await Itinerary.find({ trip: req.params.tripId });
+    res.json(itinerary);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.updateItinerary = async (req, res) => {
+  try {
+    const updatedItinerary = await Itinerary.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updatedItinerary);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.deleteItinerary = async (req, res) => {
+  try {
+    await Itinerary.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Itinerary deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
