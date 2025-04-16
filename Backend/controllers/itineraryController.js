@@ -19,6 +19,7 @@ exports.getTripItinerary = async (req, res) => {
   }
 };
 
+// Update itinerary by id
 exports.updateItinerary = async (req, res) => {
   try {
     const updatedItinerary = await Itinerary.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -28,6 +29,8 @@ exports.updateItinerary = async (req, res) => {
   }
 };
 
+
+// Deleting itinerary by ID 
 exports.deleteItinerary = async (req, res) => {
   try {
     await Itinerary.findByIdAndDelete(req.params.id);

@@ -1,5 +1,6 @@
 const Trip = require('../models/tripModel');
 
+// Creating data
 exports.createTrip = async (req, res) => {
   try {
     const trip = new Trip({ ...req.body, user: req.userId });
@@ -10,6 +11,8 @@ exports.createTrip = async (req, res) => {
   }
 };
 
+
+// Fetching data by ID 
 exports.getUserTrips = async (req, res) => {
   try {
     const trips = await Trip.find({ user: req.userId });
@@ -19,6 +22,8 @@ exports.getUserTrips = async (req, res) => {
   }
 };
 
+
+// Updating a trip by using ID
 exports.updateTrip = async (req, res) => {
   try {
     const updatedTrip = await Trip.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -28,6 +33,8 @@ exports.updateTrip = async (req, res) => {
   }
 };
 
+
+// Deleting trip by using ID
 exports.deleteTrip = async (req, res) => {
   try {
     await Trip.findByIdAndDelete(req.params.id);
