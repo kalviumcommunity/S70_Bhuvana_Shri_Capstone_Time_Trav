@@ -32,7 +32,8 @@ app.use('/api/upload', uploadRoutes);
 // Error middleware
 app.use(error);
 
-// MongoDB Connection (✅ Updated - no deprecated options)
+// MongoDB Connection ( Updated - no deprecated options)
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB error:', err));

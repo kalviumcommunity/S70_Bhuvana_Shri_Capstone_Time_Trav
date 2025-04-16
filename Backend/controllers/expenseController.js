@@ -1,5 +1,6 @@
 const Expense = require('../models/expenseModel');
 
+// Adding expensive
 exports.addExpense = async (req, res) => {
   try {
     const expense = new Expense(req.body);
@@ -19,6 +20,8 @@ exports.getTripExpenses = async (req, res) => {
   }
 };
 
+
+// Deleting expensives by ID
 exports.deleteExpense = async (req, res) => {
   try {
     await Expense.findByIdAndDelete(req.params.id);
