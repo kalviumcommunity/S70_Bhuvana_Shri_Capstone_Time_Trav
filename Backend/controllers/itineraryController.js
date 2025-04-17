@@ -19,7 +19,7 @@ exports.getTripItinerary = async (req, res) => {
   }
 };
 
-// Update itinerary by id
+// Update itinerary by ID
 exports.updateItinerary = async (req, res) => {
   try {
     const updatedItinerary = await Itinerary.findByIdAndUpdate(req.params.id, req.body, { new: true });
