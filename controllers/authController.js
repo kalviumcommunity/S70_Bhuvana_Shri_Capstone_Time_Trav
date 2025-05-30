@@ -20,7 +20,7 @@ exports.signup = async (req, res) => {
 
     // Optionally, create a token or just send success message
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: '7d',
+      expiresIn: '7days',
     });
 
     res.status(201).json({ user: newUser, token });
@@ -53,6 +53,6 @@ exports.login = async (req, res) => {
       .status(200)
       .json({ user, token });
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'internal Server error' });
   }
 };
