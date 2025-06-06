@@ -2,7 +2,9 @@
 const Expense = require('../models/expenseModel');
 
 // Adding expensive
-exports. addExpense = async (req, res) => {
+// Adding expense
+exports.addExpense = async (req, res) => {
+
   try {
     const expense = new Expense(req.body);
     await expense.save();
