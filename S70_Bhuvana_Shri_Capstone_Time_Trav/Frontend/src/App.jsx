@@ -1,13 +1,22 @@
-import { useState } from 'react'
-import './App.css'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import SignUp from './pages/signUp';
+import Login from "./pages/Login";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import GoogleOAuthConfig from './components/Auth/GoogleOAuthConfig';
 
-function App() {
 
-  return (
-    <>
-      <h1>Welcome to TimeTrav</h1>
-    </>
-  )
-}
+const App = () => (
+  <GoogleOAuthConfig>
+    <Routes>
+      <Route path="/" element={<SignUp />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+     
+    </Routes>
+  </GoogleOAuthConfig>
+);
 
-export default App
+export default App;
