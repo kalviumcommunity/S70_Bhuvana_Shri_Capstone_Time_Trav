@@ -1,0 +1,30 @@
+.perspective {
+  perspective: 1000px;
+}
+
+.flipper {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.rotateY180 {
+  transform: rotateY(180deg);
+}
+
+.rotateY0 {
+  transform: rotateY(0deg);
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
